@@ -9,13 +9,12 @@ router.get('/', amazonController.getAll);
 
 router.get('/:id', amazonController.getSingle);
 
-// TODO:  router.post SOMETHING contactsController.createContact
 router.post('/', amazonController.createProduct);
 
-// TODO: router.put SOMETHING contactsController.updateContact
+// TODO: router.put SOMETHING amazonController.updateProduct
 router.put('/:id', amazonController.updateProduct);
 
-// TODO: router.delete SOMETHING contactsController.deleteContact
+// TODO: router.delete SOMETHING amazonController.deleteProduct
 router.delete('/:id', amazonController.deleteProduct);
 
 module.exports = router;
