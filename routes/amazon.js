@@ -3,20 +3,19 @@ const router = express.Router();
 
 const amazonController = require('../controllers/amazon');
 
-// Creates a new Router instance and registers a GET request handler for the '/' route. Then the "contactsController.getAll" handler function is passed to the get methig.
 
-// //When you receive a get with '/' pass it to contactsController.getAll
-// router.get('/', amazonController.getAll);
+//When you receive a get with '/' pass it to amazonController.getAll
+router.get('/', amazonController.getAll);
 
-// router.get('/:id', amazonController.getSingle);
+router.get('/:id', amazonController.getSingle);
 
-// // TODO:  router.post SOMETHING amazonController.createProduct
-// router.post('/', amazonController.createProduct);
+// TODO:  router.post SOMETHING contactsController.createContact
+router.post('/', amazonController.createProduct);
 
-// // TODO: router.put SOMETHING amazonController.updateProduct
-// router.put('/:id', amazonController.updateProduct);
+// TODO: router.put SOMETHING contactsController.updateContact
+router.put('/:id', amazonController.updateProduct);
 
-// // TODO: router.delete SOMETHING amazonController.deleteProduct
-// router.delete('/:id', amazonController.deleteProduct);
+// TODO: router.delete SOMETHING contactsController.deleteContact
+router.delete('/:id', amazonController.deleteProduct);
 
 module.exports = router;
