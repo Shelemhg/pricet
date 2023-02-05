@@ -2,11 +2,11 @@
   "name": "pricet",
   "version": "1.0.0",
   "description": "Amazon price tracker. Create a price history and get notifications when is the best time to buy.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "swagger-autogen": "node ./swagger.js"    
+    "swagger-autogen": "node ./swagger.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,10 @@
     "body-parser": "^1.20.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongodb": "^5.0.0"
+    "mongodb": "^5.0.0",
+    "swagger-ui-express": "^4.6.0"
+  },
+  "devDependencies": {
+    "swagger-autogen": "^2.23.0"
   }
 }
