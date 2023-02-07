@@ -1,14 +1,16 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
+const database = 'pricet';
+const collection = 'amazon';
 
 
 const getAll = async (req, res, next) => {
 // #swagger.tags = ['amazon']
 const result = await mongodb
     .getDb()
-    .db('pricet')
-    .collection('amazon')
+    .db(database)
+    .collection(collection)
     .find();
 result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
@@ -32,8 +34,8 @@ const toLookup =  req.params.asin.toUpperCase();
     
     const result = await mongodb
     .getDb()
-    .db('pricet')
-    .collection('amazon')
+    .db(database)
+    .collection(collection)
     .find({ asin: toLookup });
 
 result.toArray().then((lists) => {
@@ -60,8 +62,8 @@ const createProduct = async (req, res) => {
     };
     const response = await mongodb    
         .getDb()
-        .db('pricet')
-        .collection('amazon')
+        .db(database)
+        .collection(collection)
         .insertOne(newProduct);
         
     if (response.acknowledged) {
@@ -93,8 +95,8 @@ const updateProduct = async (req, res) => {
     };
     const response = await mongodb    
         .getDb()
-        .db('pricet')
-        .collection('amazon')
+        .db(database)
+        .collection(collection)
         .replaceOne({ _id: productId }, updatedProduct);
     if (response.modifiedCount > 0) {
         res.status(204).json(response);
@@ -112,8 +114,8 @@ const deleteProduct = async (req, res) => {
     const productId = new ObjectId(req.params.id);
     const response = await mongodb
         .getDb()
-        .db('pricet')
-        .collection('amazon')
+        .db(database)
+        .collection(collection)
         .deleteOne({ _id: productId }, true);
         console.log(response);
     if (response.deletedCount > 0) {
