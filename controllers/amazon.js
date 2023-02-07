@@ -21,12 +21,21 @@ result.toArray().then((lists) => {
 
 const getSingle = async (req, res, next) => {
 // #swagger.tags = ['oneProduct']
-const userId = new ObjectId(req.params.id);
-const result = await mongodb
+//TODO add .trim to req.params.asin
+const toLookup =  req.params.asin.toUpperCase();
+// const userId = new ObjectId(req.params.asin);
+// const result = await mongodb
+//     .getDb()
+//     .db('pricet')
+//     .collection('amazon')
+//     .find({ _id: userId });
+    
+    const result = await mongodb
     .getDb()
     .db('pricet')
     .collection('amazon')
-    .find({ _id: userId });
+    .find({ asin: toLookup });
+
 result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200)
