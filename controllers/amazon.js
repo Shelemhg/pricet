@@ -1,17 +1,24 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
-// When a GET request is received, this function is executed and it prints to the browser all the files in the database.
+
+
 const getAll = async (req, res, next) => {
 // #swagger.tags = ['amazon']
-const result = await mongodb.getDb().db().collection('amazon').find();
+const result = await mongodb
+    .getDb()
+    .db()
+    .collection('amazon')
+    .find();
 result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists);
+    res.status(200)
+    .json(lists);
 });
 };
 
-// When a GET request is received, this function expects an ID and prints to the web browser all the info of the ID
+
+
 const getSingle = async (req, res, next) => {
 // #swagger.tags = ['oneProduct']
 const userId = new ObjectId(req.params.id);
@@ -22,9 +29,11 @@ const result = await mongodb
     .find({ _id: userId });
 result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists[0]);
+    res.status(200)
+    .json(lists[0]);
 });
 };
+
 
 
 const createProduct = async (req, res) => {
@@ -45,14 +54,18 @@ const createProduct = async (req, res) => {
         .db()
         .collection('amazon')
         .insertOne(newProduct);
+        
     if (response.acknowledged) {
-        res.status(201).json(response);
+        res.status(201)
+        .json(response);
         console.log('Info saved to DB succesfully');
     } else {
-        res.status(500).json(response.error || 'Some error occurred while creating the contact.');
+        res.status(500)
+        .json(response.error || 'Some error occurred while creating the contact.');
         console.log('Upload of info failed.');
     }
 };
+
 
 
 const updateProduct = async (req, res) => {
@@ -82,6 +95,7 @@ const updateProduct = async (req, res) => {
         console.log('Upload of info failed.');
     }
 };
+
 
 
 const deleteProduct = async (req, res) => {
