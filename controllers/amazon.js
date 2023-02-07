@@ -7,7 +7,7 @@ const getAll = async (req, res, next) => {
 // #swagger.tags = ['amazon']
 const result = await mongodb
     .getDb()
-    .db()
+    .db('pricet')
     .collection('amazon')
     .find();
 result.toArray().then((lists) => {
@@ -24,7 +24,7 @@ const getSingle = async (req, res, next) => {
 const userId = new ObjectId(req.params.id);
 const result = await mongodb
     .getDb()
-    .db()
+    .db('pricet')
     .collection('amazon')
     .find({ _id: userId });
 result.toArray().then((lists) => {
@@ -51,7 +51,7 @@ const createProduct = async (req, res) => {
     };
     const response = await mongodb    
         .getDb()
-        .db()
+        .db('pricet')
         .collection('amazon')
         .insertOne(newProduct);
         
@@ -84,7 +84,7 @@ const updateProduct = async (req, res) => {
     };
     const response = await mongodb    
         .getDb()
-        .db()
+        .db('pricet')
         .collection('amazon')
         .replaceOne({ _id: productId }, updatedProduct);
     if (response.modifiedCount > 0) {
@@ -103,7 +103,7 @@ const deleteProduct = async (req, res) => {
     const productId = new ObjectId(req.params.id);
     const response = await mongodb
         .getDb()
-        .db()
+        .db('pricet')
         .collection('amazon')
         .deleteOne({ _id: productId }, true);
         console.log(response);
