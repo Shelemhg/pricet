@@ -1,6 +1,7 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
+//  Names of the Database and Collections
 const database = require('../configs/db.config.js').database;
 const collection = require('../configs/db.config.js').collection;
 
@@ -81,7 +82,9 @@ const createProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
     // #swagger.tags = ['updateProduct']
-    const productId = new ObjectId(req.params.id);
+    // const productId = new ObjectId(req.params.id);
+
+    const toLookup =  req.params.asin;
     const newDate = new Date();
     const updatedProduct = {
         asin: req.body.asin,
@@ -97,7 +100,7 @@ const updateProduct = async (req, res) => {
         .getDb()
         .db(database)
         .collection(collection)
-        .replaceOne({ _id: productId }, updatedProduct);
+        .replaceOne({ asin: toLookup }, updatedProduct);
     if (response.modifiedCount > 0) {
         res.status(204).json(response);
         console.log('Info saved to DB succesfully');

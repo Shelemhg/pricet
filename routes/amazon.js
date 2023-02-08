@@ -12,9 +12,9 @@ router.get('/:asin', amazonController.getSingle);
 router.post('/', amazonController.createProduct);
 
 // TODO: router.put SOMETHING amazonController.updateProduct
-router.put('/:id', amazonController.updateProduct);
+router.put('/:asin', amazonController.updateProduct);
 
 // TODO: router.delete SOMETHING amazonController.deleteProduct
-router.delete('/:id', amazonController.deleteProduct);
+router.delete('/:asin', amazonController.deleteProduct);
 
 module.exports = router;
