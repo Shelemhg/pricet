@@ -29,14 +29,14 @@ content-type: application/json
 ###
 GET http://localhost:3000/amazon
 
-###       PUT contact       ###
+###       UPDATE contact       ###
 ###############################
-PUT http://localhost:3000/amazon/B09ZSPJLNS1 HTTP/1.1
+PUT http://localhost:3000/amazon/B09ZSPJLNS HTTP/1.1
 content-type: application/json
 
 { 
-    "asin": "B09ZSPJLNS1",
-    "title": "HUAWEI Watch GT 5555 Pro 46 mm GPS + Bluetooth Smartwatch (Grey Leather) - International Version",
+    "asin": "B09ZSPJLNS",
+    "title": "HUAWEI Watch GT 6 Pro 46 mm GPS + Bluetooth Smartwatch (Grey Leather) - International Version",
     "price": "389",
     "date": "3.22.2-2023-02-03",
     "imageUrl": "https://m.media-amazon.com/images/I/61ez4hcV+eL._AC_SL1000_.jpg",
@@ -76,7 +76,7 @@ content-type: application/json
 
 { 
     "asin": "B09ZSPJLNS",
-    "title": "HUAWEI Watch GT 3 Pro 46 mm GPS + Bluetooth Smartwatch (Grey Leather) - International Version",
+    "title": "HUAWEI Watch GT 33333333 Pro 46 mm GPS + Bluetooth Smartwatch (Grey Leather) - International Version",
     "price": "389",
     "date": "3.22.2-2023-02-03",
     "imageUrl": "https://m.media-amazon.com/images/I/61ez4hcV+eL._AC_SL1000_.jpg",
@@ -93,12 +93,12 @@ GET http://pricet.onrender.com/amazon
 
 ###       PUT contact       ###
 ###############################
-PUT http://pricet.onrender.com/amazon/B09ZSPJLNS1 HTTP/1.1
+PUT http://pricet.onrender.com/amazon/B09ZSPJLNS HTTP/1.1
 content-type: application/json
 
 { 
-    "asin": "B09ZSPJLNS1",
-    "title": "HUAWEI Watch GT 5555 Pro 46 mm GPS + Bluetooth Smartwatch (Grey Leather) - International Version",
+    "asin": "B09ZSPJLNS",
+    "title": "HUAWEI Watch GT 3 Pro 46 mm GPS + Bluetooth Smartwatch (Grey Leather) - International Version",
     "price": "389",
     "date": "3.22.2-2023-02-03",
     "imageUrl": "https://m.media-amazon.com/images/I/61ez4hcV+eL._AC_SL1000_.jpg",
