@@ -114,16 +114,17 @@ const updateProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
     // #swagger.tags = ['deleteProduct']
-    const productId = new ObjectId(req.params.id);
+    // const productId = new ObjectId(req.params.id);
+    const toLookup =  req.params.asin;
     const response = await mongodb
         .getDb()
         .db(database)
         .collection(collection)
-        .deleteOne({ _id: productId }, true);
+        .deleteOne({ asin : toLookup }, true);
         console.log(response);
     if (response.deletedCount > 0) {
         res.status(200).send();
-        console.log(productId + ' DELETED');
+        console.log(toLookup + ' DELETED');
         } else {
         res.status(500).json(response.error || 'An error occurred while deleting the contact.');
         console.log('Unable to Delete');
