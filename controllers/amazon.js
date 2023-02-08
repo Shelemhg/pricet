@@ -56,10 +56,14 @@ const createProduct = async (req, res) => {
         // #swagger.tags = ['createProduct']
         const newDate = new Date();
         
-        if(!req.body.asin ||!req.body.title ||!req.body.price ||!req.body.imageUrl ||!req.body.quantity ||!req.body.url ||!req.body.comment) {
-                res.status(400).send({ message: 'Missing field'});
-                return;
-            }
+        if(!req.body.asin || !req.body.title || !req.body.price || !req.body.quantity || !req.body.url) {
+            res.status(400).send({ message: 'Field missing' });
+		    return;
+        }
+        if (!req.body.quantity.isInteger){
+            res.status(400).send({ message: 'Quantity must be a whole number' });
+		    return;
+        }
         
         const newProduct = {
             asin: req.body.asin,
@@ -98,10 +102,15 @@ const updateProduct = async (req, res) => {
     // const productId = new ObjectId(req.params.id);
 
     try {
-        if(!req.body.asin ||!req.body.title ||!req.body.price ||!req.body.imageUrl ||!req.body.quantity ||!req.body.url ||!req.body.comment) {
-            res.status(400).send({ message: 'Invalid Username Supplied' });
+        if(!req.body.asin || !req.body.title || !req.body.price || !req.body.quantity || !req.body.url) {
+            res.status(400).send({ message: 'Field missing' });
 		    return;
         }
+        if (!req.body.quantity.isInteger){
+            res.status(400).send({ message: 'Quantity must be a whole number' });
+		    return;
+        }
+
         const toLookup =  req.params.asin;
         const newDate = new Date();
 
