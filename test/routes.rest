@@ -60,9 +60,6 @@ DELETE http://localhost:3000/amazon/B09ZSPJLNS HTTP/1.1
 ////////////////////////////////////////////////
 ###
 GET http://pricet.onrender.com/amazon
-// LOCALHOST
-###
-GET http://pricet.onrender.com/amazon
 ###
 GET http://pricet.onrender.com/amazon/B09ZSPJLNS
 ###
