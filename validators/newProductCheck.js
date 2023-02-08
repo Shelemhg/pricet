@@ -15,7 +15,7 @@ const validateCreateProduct = [
     check('quantity')
         .exists()
         .notEmpty().withMessage('Quantity cannot be empty.')
-        .isNumeric().notEmpty().withMessage('Quantity must be a number.'),
+        .isNumeric().withMessage('Quantity must be a number.'),
     (req, res, next) => {
         try {
             validationResult(req).throw()
