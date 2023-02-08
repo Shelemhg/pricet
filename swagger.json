@@ -11,6 +11,13 @@
     "https"
   ],
   "paths": {
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/amazon/": {
       "get": {
         "tags": [
@@ -74,7 +81,7 @@
         }
       }
     },
-    "/amazon/{id}": {
+    "/amazon/{asin}": {
       "get": {
         "tags": [
           "oneProduct"
@@ -85,7 +92,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "asin",
             "in": "path",
             "required": true,
             "type": "string"
@@ -104,7 +111,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "asin",
             "in": "path",
             "required": true,
             "type": "string"
@@ -156,7 +163,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "asin",
             "in": "path",
             "required": true,
             "type": "string"
