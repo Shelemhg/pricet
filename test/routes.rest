@@ -2,9 +2,6 @@
 ###
 GET http://localhost:3000/amazon
 ###
-GET http://localhost:3000/amazon/63df4684fde51fd723c81011
-
-###
 GET http://localhost:3000/amazon/B09ZSPJLNS
 ###
 GET http://localhost:3000/amazon/B081L5HJBP

@@ -1,16 +1,21 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
-const database = 'pricet';
-const collection = 'amazon';
+const db = require('../configs/db.config.js');
+// const database.collection = require('../configs/db.config.js');
+
+// import { databaseName } from '../configs/db.config.js';
+// import { collection } from '../configs/db.config.js';
+
+console.log(db.name);
 
 
 const getAll = async (req, res, next) => {
 // #swagger.tags = ['amazon']
 const result = await mongodb
     .getDb()
-    .db(database)
-    .collection(collection)
+    .db(db.name)
+    .collection(db.collection)
     .find();
 result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
@@ -34,8 +39,8 @@ const toLookup =  req.params.asin.toUpperCase();
     
     const result = await mongodb
     .getDb()
-    .db(database)
-    .collection(collection)
+    .db(db.name)
+    .collection(db.collection)
     .find({ asin: toLookup });
 
 result.toArray().then((lists) => {
@@ -62,8 +67,8 @@ const createProduct = async (req, res) => {
     };
     const response = await mongodb    
         .getDb()
-        .db(database)
-        .collection(collection)
+        .db(db.name)
+        .collection(db.collection)
         .insertOne(newProduct);
         
     if (response.acknowledged) {
@@ -95,8 +100,8 @@ const updateProduct = async (req, res) => {
     };
     const response = await mongodb    
         .getDb()
-        .db(database)
-        .collection(collection)
+        .db(db.name)
+        .collection(db.collection)
         .replaceOne({ _id: productId }, updatedProduct);
     if (response.modifiedCount > 0) {
         res.status(204).json(response);
@@ -114,8 +119,8 @@ const deleteProduct = async (req, res) => {
     const productId = new ObjectId(req.params.id);
     const response = await mongodb
         .getDb()
-        .db(database)
-        .collection(collection)
+        .db(db.name)
+        .collection(db.collection)
         .deleteOne({ _id: productId }, true);
         console.log(response);
     if (response.deletedCount > 0) {
