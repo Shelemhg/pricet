@@ -4,21 +4,18 @@ const { validateResult } = require('express-validator');
 const validateCreateProduct = [
     check('asin')
         .exists()
-        .not()
-        .isEmpty(),
+        .notEmpty().withMessage('ASIN cannot be empty.'),
     check('title')
         .exists()
-        .not()
-        .isEmpty(),
+        .notEmpty().withMessage('Title cannot be empty.'),
     check('price')
         .exists()
-        .not()
-        .isEmpty(),
+        .notEmpty().withMessage('Price cannot be empty.')
+        .isNumeric().withMessage('Price must be a number.'),
     check('quantity')
         .exists()
-        .not()
-        .isEmpty()
-        .isNumeric(),
+        .notEmpty().withMessage('Quantity cannot be empty.')
+        .isNumeric().notEmpty().withMessage('Quantity must be a number.'),
     (req, res, next) => {
         try {
             validationResult(req).throw()
@@ -28,7 +25,8 @@ const validateCreateProduct = [
             res.send({ errors: err.array()});
         }
     }
-
 ];
+
+
 
 module.exports = { validateCreateProduct }
