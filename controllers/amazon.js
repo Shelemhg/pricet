@@ -1,4 +1,4 @@
-const mongodb = require('../db/connect');
+const mongodb = require('../config/db.config.js');
 const ObjectId = require('mongodb').ObjectId;
 
 //  Names of the Database and Collections
