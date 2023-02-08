@@ -3,18 +3,17 @@ const router = express.Router();
 
 const amazonController = require('../controllers/amazon');
 
+const { validateCreate } = require('../validators/newProductCheck');
 
-//When you receive a get with '/' pass it to amazonController.getAll
+
 router.get('/', amazonController.getAll);
 
 router.get('/:asin', amazonController.getSingle);
 
-router.post('/', amazonController.createProduct);
+router.post('/', validateCreateProduct, amazonController.createProduct);
 
-// TODO: router.put SOMETHING amazonController.updateProduct
 router.put('/:asin', amazonController.updateProduct);
 
-// TODO: router.delete SOMETHING amazonController.deleteProduct
 router.delete('/:asin', amazonController.deleteProduct);
 
 module.exports = router;

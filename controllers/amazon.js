@@ -5,7 +5,6 @@ const ObjectId = require('mongodb').ObjectId;
 const database = require('../config/db.config.js').database;
 const collection = require('../config/db.config.js').collection;
 
-const {check, validationResult } = require('express-validator');
 
 
 const getAll = async (req, res, next) => {
@@ -26,7 +25,6 @@ const getAll = async (req, res, next) => {
         console.log(err1.message);
 	}
 };
-
 
 
 const getSingle = async (req, res, next) => {
@@ -52,17 +50,11 @@ const getSingle = async (req, res, next) => {
 };
 
 
-
-const createProduct = async (req, res) => {
+const createProduct = async (req, res, next) => {
     try {
         // #swagger.tags = ['createProduct']
         const newDate = new Date();
-        
-        if(!req.body.asin || !req.body.title || !req.body.price || !req.body.quantity || !req.body.url) {
-            res.status(400).send({ message: 'Field missing' });
-		    return;
-        }
-        
+
         const newProduct = {
             asin: req.body.asin.toUpperCase(),
             title: req.body.title,
@@ -92,7 +84,6 @@ const createProduct = async (req, res) => {
 		res.status(500).json(err3);
     }
 };
-
 
 
 const updateProduct = async (req, res) => {
@@ -138,7 +129,6 @@ const updateProduct = async (req, res) => {
 };
 
 
-
 const deleteProduct = async (req, res) => {
     // #swagger.tags = ['deleteProduct']
     try {
@@ -165,7 +155,7 @@ const deleteProduct = async (req, res) => {
             }
     } catch (err5) {
 		res.status(500).json(err5);
-        console.log(err5.message);
+        // console.log(err5.message);
     }
 };
 
