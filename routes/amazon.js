@@ -3,7 +3,7 @@ const router = express.Router();
 
 const amazonController = require('../controllers/amazon');
 
-const { validateCreate } = require('../validators/newProductCheck');
+const { validateCreateProduct } = require('../validators/newProductCheck');
 
 
 router.get('/', amazonController.getAll);
