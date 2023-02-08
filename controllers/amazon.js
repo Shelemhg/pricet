@@ -171,7 +171,7 @@ const deleteProduct = async (req, res) => {
             }
     } catch (err5) {
 		res.status(500).json(err5);
-        console.log(err.message);
+        console.log(err5.message);
     }
 };
 
