@@ -60,10 +60,6 @@ const createProduct = async (req, res) => {
             res.status(400).send({ message: 'Field missing' });
 		    return;
         }
-        if (!req.body.quantity.isInteger){
-            res.status(400).send({ message: 'Quantity must be a whole number' });
-		    return;
-        }
         
         const newProduct = {
             asin: req.body.asin,
@@ -106,10 +102,6 @@ const updateProduct = async (req, res) => {
             res.status(400).send({ message: 'Field missing' });
 		    return;
         }
-        if (!req.body.quantity.isInteger){
-            res.status(400).send({ message: 'Quantity must be a whole number' });
-		    return;
-        }
 
         const toLookup =  req.params.asin;
         const newDate = new Date();
@@ -130,12 +122,12 @@ const updateProduct = async (req, res) => {
             .collection(collection)
             .replaceOne({ asin: toLookup }, updatedProduct);
         
-        if (err) {
-            res.status(500).json(err || 'Some error occurred while updating the contact.');
-            console.log('Upload of info failed.');
-        } else {
+        if (response.modifiedCount > 0) {
             res.status(204).json(response);
             console.log('Info saved to DB succesfully');
+        } else {
+            res.status(500).json(response.error || 'Some error occurred while creating the contact.');
+            console.log('Upload of info failed.');
         }
         
         //     if (response.modifiedCount > 0) {
@@ -146,8 +138,8 @@ const updateProduct = async (req, res) => {
         //     console.log('Upload of info failed.');
         // }
     } catch (err) {
-		res.status(500).json(err);
-        console.log(err.message);
+		res.status(500);
+        console.log(err);
 	}
 };
 
