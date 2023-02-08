@@ -21,6 +21,7 @@ const getAll = async (req, res, next) => {
         });
     } catch (err) {
 		res.status(500).json(err);
+        console.log(err.message);
 	}
 };
 
@@ -44,6 +45,7 @@ const getSingle = async (req, res, next) => {
         });
     } catch (err){
         res.status(500).json(err);
+        console.log(err.message);
     }
 };
 
@@ -136,6 +138,7 @@ const updateProduct = async (req, res) => {
         // }
     } catch (err) {
 		res.status(500).json(err);
+        console.log(err.message);
 	}
 };
 
@@ -167,6 +170,7 @@ const deleteProduct = async (req, res) => {
             }
     } catch (err) {
 		res.status(500).json(err);
+        console.log(err.message);
     }
 };
 
