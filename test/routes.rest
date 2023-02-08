@@ -60,12 +60,18 @@ DELETE http://localhost:3000/amazon/B09ZSPJLNS HTTP/1.1
 ////////////////////////////////////////////////
 ###
 GET http://pricet.onrender.com/amazon
+// LOCALHOST
 ###
-GET http://pricet.onrender.com/amazon/63df4684fde51fd723c81011
+GET http://pricet.onrender.com/amazon
+###
+GET http://pricet.onrender.com/amazon/B09ZSPJLNS
+###
+GET http://pricet.onrender.com/amazon/B081L5HJBP
 
 
-### Create NEW USER
-POST http://pricet.onrender.com/amazon HTTP/1.1
+###       CREATE new user       ###
+###################################
+POST http://pricet.onrender.com/amazon/ HTTP/1.1
 content-type: application/json
 
 { 
@@ -78,3 +84,30 @@ content-type: application/json
     "url": "https://www.amazon.com/HUAWEI-Watch-Bluetooth-Smartwatch-Leather/dp/B09ZSPJLNS/ref=sr_1_2?crid=28RM3H9TXB9EH&keywords=HUAWEI+Watch+GT+3+Pro&qid=1675578826&sprefix=huawei+watch+gt+3+pro%2Caps%2C105&sr=8-2",
     "comment": "$55 Shipping + Import"
 }
+
+
+
+
+###
+GET http://pricet.onrender.com/amazon
+
+###       PUT contact       ###
+###############################
+PUT http://pricet.onrender.com/amazon/B09ZSPJLNS1 HTTP/1.1
+content-type: application/json
+
+{ 
+    "asin": "B09ZSPJLNS1",
+    "title": "HUAWEI Watch GT 5555 Pro 46 mm GPS + Bluetooth Smartwatch (Grey Leather) - International Version",
+    "price": "389",
+    "date": "3.22.2-2023-02-03",
+    "imageUrl": "https://m.media-amazon.com/images/I/61ez4hcV+eL._AC_SL1000_.jpg",
+    "quantity": "19",
+    "url": "https://www.amazon.com/HUAWEI-Watch-Bluetooth-Smartwatch-Leather/dp/B09ZSPJLNS/ref=sr_1_2?crid=28RM3H9TXB9EH&keywords=HUAWEI+Watch+GT+3+Pro&qid=1675578826&sprefix=huawei+watch+gt+3+pro%2Caps%2C105&sr=8-2",
+    "comment": "$55 Shipping + Import"
+}
+
+
+
+### DELETE product 
+DELETE http://pricet.onrender.com/amazon/B09ZSPJLNS HTTP/1.1
