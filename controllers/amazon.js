@@ -5,6 +5,8 @@ const ObjectId = require('mongodb').ObjectId;
 const database = require('../config/db.config.js').database;
 const collection = require('../config/db.config.js').collection;
 
+const {check, validationResult } = require('express-validator');
+
 
 const getAll = async (req, res, next) => {
 // #swagger.tags = ['amazon']
@@ -31,12 +33,12 @@ const getSingle = async (req, res, next) => {
     try {
         // #swagger.tags = ['oneProduct']
         //TODO add .trim to req.params.asin
-        const toLookup =  req.params.asin.toUpperCase();            
+        const toLookup =  req.params.asin.toUpperCase();      
         const result = await mongodb
-        .getDb()
-        .db(database)
-        .collection(collection)
-        .find({ asin: toLookup });
+            .getDb()
+            .db(database)
+            .collection(collection)
+            .find({ asin: toLookup });
 
         result.toArray().then((lists) => {
             res.setHeader('Content-Type', 'application/json');
@@ -62,7 +64,7 @@ const createProduct = async (req, res) => {
         }
         
         const newProduct = {
-            asin: req.body.asin,
+            asin: req.body.asin.toUpperCase(),
             title: req.body.title,
             price: req.body.price,
             date: newDate,
@@ -129,14 +131,6 @@ const updateProduct = async (req, res) => {
             res.status(500).json(response.error || 'Some error occurred while creating the contact.');
             console.log('Upload of info failed.');
         }
-        
-        //     if (response.modifiedCount > 0) {
-        //     res.status(204).json(response);
-        //     console.log('Info saved to DB succesfully');
-        // } else {
-        //     res.status(500).json(response.error || 'Some error occurred while creating the contact.');
-        //     console.log('Upload of info failed.');
-        // }
     } catch (err4) {
 		res.status(500);
         console.log(err4);
