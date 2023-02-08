@@ -19,9 +19,9 @@ const getAll = async (req, res, next) => {
             res.status(200)
             .json(lists);
         });
-    } catch (err) {
-		res.status(500).json(err);
-        console.log(err.message);
+    } catch (err1) {
+		res.status(500).json(err1);
+        console.log(err1.message);
 	}
 };
 
@@ -43,9 +43,9 @@ const getSingle = async (req, res, next) => {
             res.status(200)
             .json(lists[0]);
         });
-    } catch (err){
-        res.status(500).json(err);
-        console.log(err.message);
+    } catch (err2){
+        res.status(500).json(err2);
+        console.log(err2.message);
     }
 };
 
@@ -86,8 +86,8 @@ const createProduct = async (req, res) => {
             .json(response.error || 'Some error occurred while creating the contact.');
             console.log('Upload of info failed.');
         }
-    } catch (err) {
-		res.status(500).json(err);
+    } catch (err3) {
+		res.status(500).json(err3);
     }
 };
 
@@ -137,9 +137,9 @@ const updateProduct = async (req, res) => {
         //     res.status(500).json(response.error || 'Some error occurred while creating the contact.');
         //     console.log('Upload of info failed.');
         // }
-    } catch (err) {
+    } catch (err4) {
 		res.status(500);
-        console.log(err);
+        console.log(err4);
 	}
 };
 
@@ -169,8 +169,8 @@ const deleteProduct = async (req, res) => {
             res.status(500).json(response.error || 'An error occurred while deleting the contact.');
             console.log('Unable to Delete');
             }
-    } catch (err) {
-		res.status(500).json(err);
+    } catch (err5) {
+		res.status(500).json(err5);
         console.log(err.message);
     }
 };
