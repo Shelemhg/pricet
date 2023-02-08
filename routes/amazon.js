@@ -12,7 +12,7 @@ router.get('/:asin', amazonController.getSingle);
 
 router.post('/', validateCreateProduct, amazonController.createProduct);
 
-router.put('/:asin', amazonController.updateProduct);
+router.put('/:asin', validateCreateProduct, amazonController.updateProduct);
 
 router.delete('/:asin', amazonController.deleteProduct);
 

@@ -1,5 +1,4 @@
 const { check, validationResult } = require('express-validator');
-const { validateResult } = require('express-validator');
 
 const validateCreateProduct = [
     check('asin')
@@ -21,7 +20,7 @@ const validateCreateProduct = [
             validationResult(req).throw()
             return next();
         } catch (err) {
-            res.status(403);
+            res.status(400);
             res.send({ errors: err.array()});
         }
     }

@@ -91,11 +91,6 @@ const updateProduct = async (req, res) => {
     // const productId = new ObjectId(req.params.id);
 
     try {
-        if(!req.body.asin || !req.body.title || !req.body.price || !req.body.quantity || !req.body.url) {
-            res.status(400).send({ message: 'Field missing' });
-		    return;
-        }
-
         const toLookup =  req.params.asin;
         const newDate = new Date();
 
@@ -133,11 +128,6 @@ const deleteProduct = async (req, res) => {
     // #swagger.tags = ['deleteProduct']
     try {
         // const productId = new ObjectId(req.params.id);
-
-        if (!req.params.asin) {
-            res.status(400).send({ message: 'Please provide ASIN number' });
-		    return;
-        }
 
         const toLookup =  req.params.asin;
         const response = await mongodb
