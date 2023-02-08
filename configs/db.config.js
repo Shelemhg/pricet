@@ -1,7 +1,7 @@
-const name = 'pricet';
+const database = 'pricet';
 const collection = 'amazon';
 
 module.exports = { 
-    name, 
+    database, 
     collection
 };
