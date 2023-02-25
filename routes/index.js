@@ -5,6 +5,16 @@ router.use('/', require('./swagger'));
 router.use('/amazon', require('./amazon'));
 
 
+//Google OAuth20
+
+const passport = require('passport');
+const GoogleStrategy = require( 'passport-google-oauth20' ).Strategy;
+
+const session = require('express-session');
+router.use(session({ secret:'cats'}));
+router.use(passport.initialize());
+router.use(passport.session());
+
 
 function isLoggedIn(req, res, next) {
     req.user ? next() : res.sendStatus(401);
@@ -12,8 +22,7 @@ function isLoggedIn(req, res, next) {
 
 
 
-const passport = require('passport');
-const GoogleStrategy = require( 'passport-google-oauth20' ).Strategy;
+
 
 require('../auth');
 
@@ -38,9 +47,17 @@ router.get('/auth/failure', (req, res) => {
 });
 
 router.get('/protected', isLoggedIn, (req, res) => {
-    res.send('Hello');
+    res.send(`Welcome ${req.user.displayName}`);
 });
 
+
+router.get('/logout', (req, res) => {
+    req.logout(function(err){
+        if(err) { return next(err);}
+    });
+    req.session.destroy();
+    res.send('Bye!');
+});
 
 
 
