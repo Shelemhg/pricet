@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
-
+const path = require('path');
 
 //Google OAuth20
 
 const passport = require('passport');
 const GoogleStrategy = require( 'passport-google-oauth20' ).Strategy;
 
-const session = require('cookie-session');
+// const session = require('cookie-session');
+const session = require('express-session');
+
 router.use(session({ secret:'cats'}));
 router.use(passport.initialize());
 router.use(passport.session());
@@ -23,9 +25,15 @@ function isLoggedIn(req, res, next) {
 
 require('../auth');
 
+// Part of working google OAuth
 router.get('/', (req, res) => {
     res.send('<a href="/auth/google">Authenticate with Google</a>');
 });
+
+//Experimental login page
+// router.get('/', function(req, res) {
+//     res.sendFile(path.join(__dirname, '../views/login.html'));
+//   });
 
 router.get('/auth/google',
     passport.authenticate('google', {scope: ['email', 'profile']})

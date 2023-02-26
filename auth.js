@@ -8,6 +8,7 @@ passport.use(new GoogleStrategy({
 		clientID:     process.env.GOOGLE_CLIENT_ID,
 		clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 		callbackURL: "https://pricet.onrender.com/google/callback",
+		// callbackURL: "http://localhost:3000/google/callback",
 		passReqToCallback   : true
 	},
 	function(request, accessToken, refreshToken, profile, done) {
