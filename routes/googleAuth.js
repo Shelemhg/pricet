@@ -7,8 +7,8 @@ const path = require('path');
 const passport = require('passport');
 const GoogleStrategy = require( 'passport-google-oauth20' ).Strategy;
 
-// const session = require('cookie-session');
-const session = require('express-session');
+const session = require('cookie-session');
+// const session = require('express-session');
 
 router.use(session({ secret:'cats'}));
 router.use(passport.initialize());
