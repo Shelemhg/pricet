@@ -7,7 +7,7 @@ const router = express.Router();
 const passport = require('passport');
 const GoogleStrategy = require( 'passport-google-oauth20' ).Strategy;
 
-const session = require('express-session');
+const session = require('cookie-session');
 router.use(session({ secret:'cats'}));
 router.use(passport.initialize());
 router.use(passport.session());
